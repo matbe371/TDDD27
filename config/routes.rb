@@ -1,4 +1,17 @@
 TDDD27::Application.routes.draw do
+  
+  #Länkar rooten till indexssidan.
+  root :to => 'static_pages#home'
+  
+  #Sökvägar som begärs via URL-metoden GET.
+  get "quiz/play"
+  get "quiz/result"
+  get "static_pages/home"
+  
+  #Anpassade sökvägar :to => 'controller#action'.
+  match '/play', :to => 'quiz#play'
+  match '/result',   :to => 'quiz#result'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

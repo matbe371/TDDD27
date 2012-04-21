@@ -1,0 +1,23 @@
+body{
+	padding-bottom:60px;
+}
+
+header{
+	background-color: #1F4087;
+}
+
+footer{
+	background-color: #1F4087;
+	position:absolute;
+   	bottom:0;
+   	height: 60px;
+   	width:100%;
+}
+
+.navigation{
+	width:950px;
+	margin:0 auto;
+}
+.container{
+	color: #754719;
+}

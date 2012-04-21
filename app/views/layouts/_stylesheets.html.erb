@@ -1,0 +1,12 @@
+<!--Först ett specialfall för webläsaren Internet Explorers äldre versioner-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!--Använder det färdiga css-paketet blueprint, som finns att hämta för gratis distribution-->
+<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+
+<!--En egenhändigt skapd, skräddarsydd, stylesheet-->
+<%= stylesheet_link_tag 'custom_stylesheet', :media => 'screen' %>

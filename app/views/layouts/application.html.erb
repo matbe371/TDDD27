@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TDDD27</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+	  <title><%= title %></title> <!--Rendrerar ut metoden title från app/helpers/application_helper.html.erb-->
+	  <%= render 'layouts/stylesheets' %> <!--Rendrerar ut app/views/layouts/_stylesheets.html.erb-->
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %> <!--För nätverkssäkerhet-->
+	</head>
+	<body>
+		<%= render 'layouts/header' %> <!--Rendrerar ut app/views/layouts/_header.html.erb-->
+		<div class="container">
+			<%= yield %> <!--Yield hämtar sidoinnehållet hos den aktuella sidan från mappen app/views-->
+		</div>
+	</body>
+	<%= render 'layouts/footer' %> <!--Rendrerar ut app/views/layouts/_footer.html.erb-->
 </html>
