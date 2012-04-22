@@ -2,7 +2,7 @@
 #
 # Table name: artists
 #
-#  id         :integer         not null, primary key
+#  id         :integer         not null, pimär nyckel
 #  name       :string(255)
 #  genre      :string(255)
 #  created_at :datetime
@@ -10,6 +10,11 @@
 #
 
 class Artist < ActiveRecord::Base
+  
+  #Förhållanden
+  has_many :albums
+  has_many :songs
+  
   #Klassvariabler
   attr_accessible :genre, :name 
   
