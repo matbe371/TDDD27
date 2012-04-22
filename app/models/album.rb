@@ -14,6 +14,7 @@ class Album < ActiveRecord::Base
   
   #Förhållanden
   belongs_to :artist
+  has_many :album_questions
   
   #Klassvariabler
   attr_accessible :artist_id, :title, :youtube_url

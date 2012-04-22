@@ -14,6 +14,7 @@ class Song < ActiveRecord::Base
   
   #Förhållanden
   belongs_to :artist
+  has_many :song_questions
   
   #Klassvariabler
   attr_accessible :artist_id, :title, :youtube_url
