@@ -1,5 +1,5 @@
 #
-# Table name: artists
+# Table name: song
 #
 #  id               :integer         not null, primär nyckel
 #  artist_id        :integer         not null, relationsnyckel

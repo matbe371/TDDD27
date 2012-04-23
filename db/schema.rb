@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120422135158) do
+ActiveRecord::Schema.define(:version => 20120422192042) do
+
+  create_table "album_questions", :force => true do |t|
+    t.string   "defenition"
+    t.string   "level"
+    t.string   "answer"
+    t.integer  "album_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -28,12 +37,30 @@ ActiveRecord::Schema.define(:version => 20120422135158) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "song_questions", :force => true do |t|
+    t.string   "defenition"
+    t.string   "level"
+    t.string   "answer"
+    t.integer  "song_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "songs", :force => true do |t|
     t.string   "title"
     t.string   "youtube_url"
     t.integer  "artist_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "trivia_questions", :force => true do |t|
+    t.string   "defenition"
+    t.string   "level"
+    t.string   "answer"
+    t.integer  "artist_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

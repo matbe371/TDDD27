@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: artists
+# Table name: song_questions
 #
 #  id               :integer         not null, primär nyckel
 #  song_id         :integer         not null, relationsnyckel

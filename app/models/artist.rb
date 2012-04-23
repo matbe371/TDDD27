@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: artists
+# Table name: artist
 #
 #  id         :integer         not null, pimär nyckel
 #  name       :string(255)
@@ -14,6 +14,7 @@ class Artist < ActiveRecord::Base
   #Förhållanden
   has_many :albums
   has_many :songs
+  has_many :trivia_questions
   
   #Klassvariabler
   attr_accessible :genre, :name 
