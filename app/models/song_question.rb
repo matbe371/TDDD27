@@ -25,6 +25,9 @@ class SongQuestion < ActiveRecord::Base
                           :length   => { :maximum => 50 }
                           
   validates :defenition, :presence => true,
-                          :length   => { :maximum => 400 }   
+                          :length   => { :maximum => 400 } 
+ 
+  validates :level, :presence => true,
+                    :inclusion => { :in => ["easy", "medium", "hard"]}  
   
 end

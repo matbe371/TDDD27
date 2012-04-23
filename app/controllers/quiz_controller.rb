@@ -9,7 +9,7 @@ class QuizController < ApplicationController
            
     #Fyller arrayen med sex st slumpmässiga, unika tal.
     for i in 0..5  
-      random = rand(number_of_artists-first_artist_id) + first_artist_id #Skapar ett slumpat tal baretar på antalen artister i databasen
+      random = rand((number_of_artists+1)-first_artist_id) + first_artist_id #Skapar ett slumpat tal baretar på antalen artister i databasen
       
       if @artists.include? random
         
@@ -21,6 +21,12 @@ class QuizController < ApplicationController
         @artists.push(random)
       end
     end
+    
+    @easy_questions = Array.new
+    @medium_questions = Array.new
+    @hard_questions = Array.new
+    
+    
     
     #Skapar de sex artister som kommer synas på sidan.
     @artist1 = Artist.find(@artists[0])

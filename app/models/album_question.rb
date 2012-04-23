@@ -26,5 +26,8 @@ class AlbumQuestion < ActiveRecord::Base
                           
   validates :defenition, :presence => true,
                           :length   => { :maximum => 400 } 
+                          
+  validates :level, :presence => true,
+                    :inclusion => { :in => ["easy", "medium", "hard"]} 
   
 end
