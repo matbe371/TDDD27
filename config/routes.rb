@@ -3,9 +3,15 @@ TDDD27::Application.routes.draw do
   #Länkar rooten till indexssidan.
   root :to => 'static_pages#home'
   
+  #RESTful path
+  resources :song_questions
+  resources :trivia_questions
+  resources :album_questions
+  
   #Sökvägar som begärs via URL-metoden GET.
   get "quiz/play"
   get "quiz/result"
+  get "quiz/show_question"
   get "static_pages/home"
   
   #Anpassade sökvägar :to => 'controller#action'.
