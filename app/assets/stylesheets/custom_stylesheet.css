@@ -14,10 +14,26 @@ footer{
    	width:100%;
 }
 
+.container{
+	min-height: 800px;
+}
+
 .navigation{
 	width:950px;
 	margin:0 auto;
 }
 .container{
 	color: #754719;
+}
+
+h1{
+	color: #754719
+}
+
+h2{
+	color: #754719
+}
+
+h3{
+	color: #754719
 }

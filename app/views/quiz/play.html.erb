@@ -1,28 +1,26 @@
-<h3>Quenstion <b>1</b> of <b>10</b></h3>
-<h3>Score: <strong>0</strong>p</h3>
+<h2>Quenstion <b>1</b> of <b>10</b></h2>
+<h2>Score: <strong>0</strong>p</h2>
 <strong><%=@artists%></strong><br />
 
-<b>Lätta frågor</b><br />
-<p><%= @easy_questions[0]%></p>
-<%= link_to @easy_questions[0], @easy_questions[0] %>
-<img src=<%= @url_array_easy[0]%> alt="Thumbnail" width="120" height="90" />
+<h3>Lätta frågor</h3><br />
+<%= link_to image_tag(@url_array_easy[0]), @easy_questions[0] %>
 <p>Artist: <b><%= @easy_info[0]%></b>. Category: <b><%= @easy_info[1]%></b>.</p><br />
 
-<img src=<%= @url_array_easy[1]%> alt="Thumbnail" width="120" height="90" />
-<%= @easy_questions[1]%><p>Artist: <b><%= @easy_info[2]%></b>. Category: <b><%= @easy_info[3]%></b>.</p><br /><br />
+<%= link_to image_tag(@url_array_easy[1]), @easy_questions[1] %>
+<p>Artist: <b><%= @easy_info[2]%></b>. Category: <b><%= @easy_info[3]%></b>.</p><br /><br />
 
-<b>Medel frågor</b><br />
-<img src=<%= @url_array_medium[0]%> alt="Thumbnail" width="120" height="90" />
-<p><%= @medium_questions[0]%></p><p>Artist: <b><%= @medium_info[0]%></b>. Category: <b><%= @medium_info[1]%></b>.</p><br />
+<h3>Medel frågor</h3><br />
+<%= link_to image_tag(@url_array_medium[0]), @medium_questions[0] %>
+<p>Artist: <b><%= @medium_info[0]%></b>. Category: <b><%= @medium_info[1]%></b>.</p><br />
 
-<img src=<%= @url_array_medium[1]%> alt="Thumbnail" width="120" height="90" />
-<%= @medium_questions[1]%><p>Artist: <b><%= @medium_info[2]%></b>. Category: <b><%= @medium_info[3]%></b>.</p><br /><br />
+<%= link_to image_tag(@url_array_medium[1]), @medium_questions[1] %>
+<p>Artist: <b><%= @medium_info[2]%></b>. Category: <b><%= @medium_info[3]%></b>.</p><br /><br />
 
-<b>Svåra frågor</b><br />
+<h3>Svåra frågor</h3><br />
 
-<img src=<%= @url_array_hard[0]%> alt="Thumbnail" width="120" height="90" />
-<%= @hard_questions[0]%><p>Artist: <b><%= @hard_info[0]%></b>. Category: <b><%= @hard_info[1]%></b>.</p><br />
+<%= link_to image_tag(@url_array_hard[0]), @hard_questions[0] %>
+<p>Artist: <b><%= @hard_info[0]%></b>. Category: <b><%= @hard_info[1]%></b>.</p><br />
 
-<img src=<%= @url_array_hard[1]%> alt="Thumbnail" width="120" height="90" />
-<%= @hard_questions[1]%><p>Artist: <b><%= @hard_info[2]%></b>. Category: <b><%= @hard_info[3]%></b>.</p><br />
+<%= link_to image_tag(@url_array_hard[1]), @hard_questions[1] %>
+<p>Artist: <b><%= @hard_info[2]%></b>. Category: <b><%= @hard_info[3]%></b>.</p><br />
  

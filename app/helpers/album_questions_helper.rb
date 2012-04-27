@@ -1,0 +1,2 @@
+module AlbumQuestionsHelper
+end
