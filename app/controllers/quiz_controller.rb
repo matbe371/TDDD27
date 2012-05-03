@@ -1,8 +1,12 @@
 class QuizController < ApplicationController
+  
+  #Action för frågeväljar-vyn.
   def play
     
     #Titel på sidan
     @title = "Pick question" 
+    
+    @question_no = 0;
     
     #Array som håller koll på vilka artister som är med i frågeomgången.
     featured_artists = Array.new
@@ -148,10 +152,58 @@ class QuizController < ApplicationController
     end 
   end
 
+  #Action för att visa den fråga som man har klickat på.
   def show_question
+    
+    #Titel för sidan.
     @title = "Question"
+    
+    #Räkanre för vilken fråga i ordningen vi håller på med.
+    @current_question_nr = Integer(params[:question_nr])
+    
+    #ID för aktuell fråga hämtas som GET-parameter.
+    current_question_id = params[:question]
+    
+    #Genre för aktuell fråga hämtas som GET-parameter.
+    genre = params[:category]
+    
+    #Beroende på vilken genre frågan hade hämtas frågans info ur respektive DB-tabell. Instansvariablerna får sina världen och kan användas i vyn.
+    if genre == "Song"
+      #Rätt fråga hämtas ur rätt tabell mha ID-nyckeln.
+      db_question = SongQuestion.find(current_question_id) 
+      @question = db_question.defenition 
+      #Utnyttjar relationen i databasen för att plocka ut sångens artist.
+      @artist = db_question.song.artist.name 
+      #URL för youtube sätts av klippets ID-kod, som finns i databasen. 
+      #showinfo= gör att klippets rubrik inte visas och autoplay=1 gör att klippet startar på en gång när sidan laddas.
+      @youtube_src = "http://www.youtube.com/v/#{db_question.song.youtube_url}&showinfo=0&autoplay=1" 
+    elsif genre == "Album" 
+      db_question = AlbumQuestion.find(current_question_id)
+      @question = db_question.defenition
+      @artist = db_question.album.artist.name
+      @youtube_src = "http://www.youtube.com/v/#{db_question.album.youtube_url}&showinfo=0&autoplay=1"
+    elsif genre == "Trivia"
+      db_question = TriviaQuestion.find(current_question_id)
+      @question = db_question.defenition
+      @artist = db_question.artist.name
+      @youtube_src = "http://www.youtube.com/v/#{db_question.artist.songs.first.youtube_url}&showinfo=0&autoplay=1"
+    end
+    
+    @question_def = db_question.defenition
+  end
+  
+  
+  
+  def question_result
+    @title = "Question result"
+    @user_answer = params[:answer]
+    @id = params[:id]
+    
+    @temp = params[:a]
+    #@temp = "test";
   end
 
+  #Action för resultatsidan.
   def result
     @title = "Quiz results"
   end

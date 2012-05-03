@@ -1,26 +1,31 @@
-<h2>Quenstion <b>1</b> of <b>10</b></h2>
+<h2>Question <b><%= @question_no%></b> of <b>10</b></h2>
 <h2>Score: <strong>0</strong>p</h2>
-<strong><%=@artists%></strong><br />
-
-<h3>Lätta frågor</h3><br />
-<%= link_to image_tag(@url_array_easy[0]), @easy_questions[0] %>
-<p>Artist: <b><%= @easy_info[0]%></b>. Category: <b><%= @easy_info[1]%></b>.</p><br />
-
-<%= link_to image_tag(@url_array_easy[1]), @easy_questions[1] %>
-<p>Artist: <b><%= @easy_info[2]%></b>. Category: <b><%= @easy_info[3]%></b>.</p><br /><br />
-
-<h3>Medel frågor</h3><br />
-<%= link_to image_tag(@url_array_medium[0]), @medium_questions[0] %>
-<p>Artist: <b><%= @medium_info[0]%></b>. Category: <b><%= @medium_info[1]%></b>.</p><br />
-
-<%= link_to image_tag(@url_array_medium[1]), @medium_questions[1] %>
-<p>Artist: <b><%= @medium_info[2]%></b>. Category: <b><%= @medium_info[3]%></b>.</p><br /><br />
-
-<h3>Svåra frågor</h3><br />
-
-<%= link_to image_tag(@url_array_hard[0]), @hard_questions[0] %>
-<p>Artist: <b><%= @hard_info[0]%></b>. Category: <b><%= @hard_info[1]%></b>.</p><br />
-
-<%= link_to image_tag(@url_array_hard[1]), @hard_questions[1] %>
-<p>Artist: <b><%= @hard_info[2]%></b>. Category: <b><%= @hard_info[3]%></b>.</p><br />
- 
+<%= link_to "TEST!", question_result_path(params={ :a=>@question_no})%>
+<%= link_to "TEST2!", show_path(params={ :question_nr=>@question_no, :question=>@easy_questions[0], :category=>@easy_info[1]})%>
+<div id="question_span">
+	<div id="easy_questions">
+		<h3>Easy, <b>300p</b></h3><br />
+		<%= link_to image_tag(@url_array_easy[0], :size=>"120x90"), @easy_questions[0]%> <!--Länk till en fråga, medskickar parametrar från aktuell fråga. -->
+		<p>Artist: <b><%= @easy_info[0]%></b>. Category: <b><%= @easy_info[1]%></b>.</p><br />
+		
+		<%= link_to image_tag(@url_array_easy[1], :size=>"120x90"), @easy_questions[1]%>
+		<p>Artist: <b><%= @easy_info[2]%></b>. Category: <b><%= @easy_info[3]%></b>.</p><br /><br />
+	</div>
+	<div id="medium_questions">
+		<h3>Medium, <b>600p</b></h3><br />
+		<%= link_to image_tag(@url_array_medium[0], :size=>"120x90"), @medium_questions[0]%>
+		<p>Artist: <b><%= @medium_info[0]%></b>. Category: <b><%= @medium_info[1]%></b>.</p><br />
+		
+		<%= link_to image_tag(@url_array_medium[1], :size=>"120x90"), @medium_questions[1]%>
+		<p>Artist: <b><%= @medium_info[2]%></b>. Category: <b><%= @medium_info[3]%></b>.</p><br /><br />
+	</div>
+	<div id="hard_questions">
+		<h3>Advanced, <b>900p</b></h3><br />
+		
+		<%= link_to image_tag(@url_array_hard[0], :size=>"120x90"), @hard_questions[0]%>
+		<p>Artist: <b><%= @hard_info[0]%></b>. Category: <b><%= @hard_info[1]%></b>.</p><br />
+		
+		<%= link_to image_tag(@url_array_hard[1], :size=>"120x90"), @hard_questions[1]%>
+		<p>Artist: <b><%= @hard_info[2]%></b>. Category: <b><%= @hard_info[3]%></b>.</p><br />
+	</div>
+</div>
