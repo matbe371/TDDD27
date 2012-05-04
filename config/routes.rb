@@ -4,9 +4,9 @@ TDDD27::Application.routes.draw do
   root :to => 'static_pages#home'
   
   #RESTful path. Genererar automatist paths till actions: index, show, new och edit.
-  resources :song_questions
-  resources :trivia_questions
-  resources :album_questions
+  #resources :song_questions
+  #resources :trivia_questions
+  #resources :album_questions
   
   #Sökvägar som begärs via URL-metoden GET.
   get "quiz/play"

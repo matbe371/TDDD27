@@ -6,9 +6,12 @@ class QuizController < ApplicationController
     #Titel på sidan
     @title = "Pick question" 
     
-    @question_no = 0;
+    #En räknare som håller koll på vilken fråga i ordningen vi är på. Fås som parameter.
+    @question_no = 0 #TODO skall fås om parameter.
     
-    #Array som håller koll på vilka artister som är med i frågeomgången.
+    #TODO här skall det in en if-sats som kollar vilken fråga vi är på om 10 => redirect.
+    
+    #Array som håller koll på vilka artister som är med i frågeomgången. Det skall inte få förekomma två frågor med samma artist.
     featured_artists = Array.new
     
     #Arrayer för frågor som är med i frågeomgången. Två av varje nivå. Instansvariabler som kommer finnas tillgängliga i vyn.
@@ -48,9 +51,10 @@ class QuizController < ApplicationController
       #Stoppar in värden i minnesarrayerna.
       featured_artists.push(question.artist.id) 
       
+      #Skapar en URL-källa för thumbnail, som hämtas från YouTube, baserat på ID't för klippet i databasen.
       thumbnail_src = "http://img.youtube.com/vi/#{question.artist.songs.find(question.artist.id).youtube_url}/2.jpg"
       
-      #Stoppar in frågan i rätt array, baserat på svårighetsgraden.
+      #Stoppar in frågan med tillhörande information i rätt arrayer, baserat på svårighetsgraden.
       if question.level == "easy"
         @easy_questions.push(question)
         @easy_info.push(question.artist.name)
@@ -82,7 +86,7 @@ class QuizController < ApplicationController
       question = SongQuestion.find(random)
       
       
-      #Här tillkommer ett villkor som kollar om frågearrayerna redan är fullsatta.
+      #Här tillkommer ett villkor som kollar om frågearrayerna redan är fullsatta. I så fall slumpas en ny fråga.
       while (featured_artists.include? question.song.artist.id) || (question.level == "easy" && @easy_questions.size == 2) || (question.level == "medium" && @medium_questions.size == 2) || (question.level == "hard" && @hard_questions.size == 2) 
         random = rand((number_of_song_questions+1)-first_song_question_id) + first_song_question_id
         question = SongQuestion.find(random)
@@ -150,6 +154,8 @@ class QuizController < ApplicationController
         @url_array_hard.push(thumbnail_src)
       end
     end 
+    
+    #**Klart! nu finns all infomration som behövs i play.html.erb**
   end
 
   #Action för att visa den fråga som man har klickat på.
@@ -161,14 +167,17 @@ class QuizController < ApplicationController
     #Räkanre för vilken fråga i ordningen vi håller på med.
     @current_question_nr = Integer(params[:question_nr])
     
+    #Räknare för poäng.
+    #TODO @current_score = ...fås av quizen som skickas med som parameter.
+    
     #ID för aktuell fråga hämtas som GET-parameter.
     current_question_id = params[:question]
     
     #Genre för aktuell fråga hämtas som GET-parameter.
-    genre = params[:category]
+    @genre = params[:category]
     
-    #Beroende på vilken genre frågan hade hämtas frågans info ur respektive DB-tabell. Instansvariablerna får sina världen och kan användas i vyn.
-    if genre == "Song"
+    #Beroende på vilken genre frågan hade hämtas frågans info ur respektive DB-tabell. Instansvariablerna får rätt världen och kan användas i vyn.
+    if @genre == "Song"
       #Rätt fråga hämtas ur rätt tabell mha ID-nyckeln.
       db_question = SongQuestion.find(current_question_id) 
       @question = db_question.defenition 
@@ -177,29 +186,27 @@ class QuizController < ApplicationController
       #URL för youtube sätts av klippets ID-kod, som finns i databasen. 
       #showinfo= gör att klippets rubrik inte visas och autoplay=1 gör att klippet startar på en gång när sidan laddas.
       @youtube_src = "http://www.youtube.com/v/#{db_question.song.youtube_url}&showinfo=0&autoplay=1" 
-    elsif genre == "Album" 
+    elsif @genre == "Album" 
       db_question = AlbumQuestion.find(current_question_id)
       @question = db_question.defenition
       @artist = db_question.album.artist.name
       @youtube_src = "http://www.youtube.com/v/#{db_question.album.youtube_url}&showinfo=0&autoplay=1"
-    elsif genre == "Trivia"
+    elsif @genre == "Trivia"
       db_question = TriviaQuestion.find(current_question_id)
       @question = db_question.defenition
       @artist = db_question.artist.name
+      #TODO slumpa fram en video för trivia istället för att jämt ta den 1:a.
       @youtube_src = "http://www.youtube.com/v/#{db_question.artist.songs.first.youtube_url}&showinfo=0&autoplay=1"
     end
-    
-    @question_def = db_question.defenition
   end
   
   
-  
+  #Action för frågeresultat. 
   def question_result
     @title = "Question result"
     @user_answer = params[:answer]
-    @id = params[:id]
-    
-    @temp = params[:a]
+    #@id = params[:id]
+    #@temp = params[:a]
     #@temp = "test";
   end
 
