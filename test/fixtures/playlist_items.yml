@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  position: 1
+  item_artist: MyString
+  item_song: MyString
+
+two:
+  position: 1
+  item_artist: MyString
+  item_song: MyString

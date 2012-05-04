@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120422192042) do
+ActiveRecord::Schema.define(:version => 20120504120536) do
 
   create_table "album_questions", :force => true do |t|
     t.string   "defenition"
@@ -30,9 +30,40 @@ ActiveRecord::Schema.define(:version => 20120422192042) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "answers", :force => true do |t|
+    t.integer  "question_number"
+    t.string   "answer"
+    t.integer  "quiz_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "artists", :force => true do |t|
     t.string   "name"
     t.string   "genre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "playlist_items", :force => true do |t|
+    t.integer  "position"
+    t.string   "item_artist"
+    t.string   "item_song"
+    t.integer  "playlist_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "playlists", :force => true do |t|
+    t.integer  "quiz_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "quizzes", :force => true do |t|
+    t.integer  "score"
+    t.string   "genre"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -59,6 +90,14 @@ ActiveRecord::Schema.define(:version => 20120422192042) do
     t.string   "level"
     t.string   "answer"
     t.integer  "artist_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "mail"
+    t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
