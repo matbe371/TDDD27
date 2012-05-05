@@ -1,0 +1,7 @@
+<h1>Confirm</h1>
+
+<h2>Are you ready to take on a new quiz, <%= @name%>? </h2>
+<%= button_to "Play!", play_path(params={:quiz_id=>@new_quiz.id, :question_no=>1}) %> <!--Knapp som länkar till play-sidan med quiz-id och räknare för första frågan som parametrar.-->
+<h3>
+	<%= link_to "How do I play?", instructions_path %><!--Länk till '/instructions' i routes.rb-->
+</h3>

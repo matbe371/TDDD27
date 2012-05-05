@@ -1,13 +1,31 @@
 class QuizController < ApplicationController
   
+  
+  #Action för att berkäfta quiz
+  def confirm
+    @title = "Confirm"
+    user = User.first #TODO ändra till sessionuser.
+    
+    #Skapar en ny quiz.
+    @new_quiz = user.quizzes.create(:score=>0, :genre=>"All")
+    
+    #Skapar en playlist tillhörnade quizzen, som kommer att visas när quizzet är avklarat. Detta sker mha relationerna i databasen.
+    @new_quiz.playlists.create
+  end
+  
+  
   #Action för frågeväljar-vyn.
   def play
     
     #Titel på sidan
     @title = "Pick question" 
     
+    #Det aktuella quizzet som spelas fås som parameter.
+    quizId = params[:quiz_id]
+    @quiz = Quiz.find(quizId)
+    
     #En räknare som håller koll på vilken fråga i ordningen vi är på. Fås som parameter.
-    @question_no = 0 #TODO skall fås om parameter.
+    @question_no = params[:question_no] #TODO skall fås om parameter.
     
     #TODO här skall det in en if-sats som kollar vilken fråga vi är på om 10 => redirect.
     
@@ -164,11 +182,14 @@ class QuizController < ApplicationController
     #Titel för sidan.
     @title = "Question"
     
-    #Räkanre för vilken fråga i ordningen vi håller på med.
-    @current_question_nr = Integer(params[:question_nr])
+    #Quiz-id fås som parameter.
+    quiz_id = params[:quiz_id]
     
-    #Räknare för poäng.
-    #TODO @current_score = ...fås av quizen som skickas med som parameter.
+    #Hämtar aktuellt qiuz.
+    @quiz = Quiz.find(quiz_id)
+    
+    #Räkanre för vilken fråga i ordningen vi håller på med.
+    @current_question_nr = params[:question_nr]
     
     #ID för aktuell fråga hämtas som GET-parameter.
     current_question_id = params[:question]
@@ -176,27 +197,42 @@ class QuizController < ApplicationController
     #Genre för aktuell fråga hämtas som GET-parameter.
     @genre = params[:category]
     
+    #Poäng för frågan hämtas som GET-parameter.
+    @points = params[:points]
+    
     #Beroende på vilken genre frågan hade hämtas frågans info ur respektive DB-tabell. Instansvariablerna får rätt världen och kan användas i vyn.
     if @genre == "Song"
+      
       #Rätt fråga hämtas ur rätt tabell mha ID-nyckeln.
-      db_question = SongQuestion.find(current_question_id) 
-      @question = db_question.defenition 
+      @db_question = SongQuestion.find(current_question_id) 
+      
       #Utnyttjar relationen i databasen för att plocka ut sångens artist.
-      @artist = db_question.song.artist.name 
+      @artist = @db_question.song.artist.name 
+      
       #URL för youtube sätts av klippets ID-kod, som finns i databasen. 
       #showinfo= gör att klippets rubrik inte visas och autoplay=1 gör att klippet startar på en gång när sidan laddas.
-      @youtube_src = "http://www.youtube.com/v/#{db_question.song.youtube_url}&showinfo=0&autoplay=1" 
+      @youtube_src = "http://www.youtube.com/v/#{@db_question.song.youtube_url}&showinfo=0&autoplay=1" 
+      
+      #Sätter in rätt svar i quizzets awnser-tabell, som kommer att redovivias på resultatsidan.
+      @quiz.answers.create(:answer=>@db_question.answer, :question_number=>Integer(@current_question_nr))
+      
+      #Skapar ett nytt playlist-item för playlist, innehållande rätt variabler för frågan. Utnyttjar här relationerna i databasen.
+      @quiz.playlists.first.playlist_items.create(:item_artist=>@artist, :item_song=>@db_question.song.title, :position=>Integer(@current_question_nr))
     elsif @genre == "Album" 
-      db_question = AlbumQuestion.find(current_question_id)
-      @question = db_question.defenition
-      @artist = db_question.album.artist.name
-      @youtube_src = "http://www.youtube.com/v/#{db_question.album.youtube_url}&showinfo=0&autoplay=1"
+      @db_question = AlbumQuestion.find(current_question_id)
+      @artist = @db_question.album.artist.name
+      @youtube_src = "http://www.youtube.com/v/#{@db_question.album.youtube_url}&showinfo=0&autoplay=1"
+      @quiz.answers.create(:answer=>@db_question.answer, :question_number=>Integer(@current_question_nr))
+   
+      #Utnyttjar stränginterpolation för att markera att det är ett album, inte en låt.
+      @quiz.playlists.first.playlist_items.create(:item_artist=>@artist, :item_song=>"#{@db_question.album.title} (album)", :position=>Integer(@current_question_nr))
     elsif @genre == "Trivia"
-      db_question = TriviaQuestion.find(current_question_id)
-      @question = db_question.defenition
-      @artist = db_question.artist.name
+      @db_question = TriviaQuestion.find(current_question_id)
+      @artist = @db_question.artist.name
       #TODO slumpa fram en video för trivia istället för att jämt ta den 1:a.
-      @youtube_src = "http://www.youtube.com/v/#{db_question.artist.songs.first.youtube_url}&showinfo=0&autoplay=1"
+      @youtube_src = "http://www.youtube.com/v/#{@db_question.artist.songs.first.youtube_url}&showinfo=0&autoplay=1"
+      @quiz.answers.create(:answer=>@db_question.answer, :question_number=>Integer(@current_question_nr))
+      @quiz.playlists.first.playlist_items.create(:item_artist=>@artist, :item_song=>@db_question.artist.songs.first.title, :position=>Integer(@current_question_nr))
     end
   end
   
@@ -204,10 +240,39 @@ class QuizController < ApplicationController
   #Action för frågeresultat. 
   def question_result
     @title = "Question result"
-    @user_answer = params[:answer]
-    #@id = params[:id]
-    #@temp = params[:a]
-    #@temp = "test";
+    
+    #Quiz-id fås som GET-parameter.
+    quiz_id = params[:quiz_id]
+    
+    #Hämtar aktuellt qiuz.
+    @quiz = Quiz.find(quiz_id)
+    
+    #Räkanre för vilken fråga i ordningen vi håller på med. Får som GET-parameter.
+    current_question_nr = params[:question_nr]
+    
+    #Frågans korrekta svar får som GET-parameter.
+    answer = params[:correct_answer]
+    
+    #Poäng för frågan hämtas som GET-parameter.
+    points = params[:points]
+    
+    #Användarens svar fås som POST-parameter från formuläret.
+    user_answer = params[:answer]
+    
+    #Kollar användaren har svarat rätt på frågan.
+    #Squish gör så att blanktecken i början och slutet ignoreras. Dessutom blir multipla blanktecken till ett.
+    #Titelize gör så att alla ord jämförs med stor bokstav först. Dvs. Det spelar inten roll om svar/fråga är skrivan med stor bokstav eller ej.
+    if answer.squish.titleize  == user_answer.squish.titleize  
+      @result = "Correct"
+      #Uppdaterar quizzets score. Pointsvariabeln type-castas till en integer för att beräkning skall kunna utföras.
+      @quiz.score = @quiz.score + Integer(points) 
+    else 
+      @result = "Fail"
+    end
+    
+    #Plussar på räknaren för antal frågor.
+    @next_question_nr = Integer(current_question_nr) + 1
+
   end
 
   #Action för resultatsidan.

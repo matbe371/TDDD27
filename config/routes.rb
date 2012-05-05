@@ -9,17 +9,22 @@ TDDD27::Application.routes.draw do
   #resources :album_questions
   
   #Sökvägar som begärs via URL-metoden GET.
+  get "quiz/confirm"
   get "quiz/play"
   get "quiz/result"
   get "quiz/question_result"
   get "quiz/show_question"
   get "static_pages/home"
+  get "static_pages/instructions"
   
   #Anpassade sökvägar :to => 'controller#action'.
+  match '/instructions', :to=> 'static_pages#instructions'
+  match '/confirm', :to=> 'quiz#confirm'
   match '/play', :to => 'quiz#play'
   match '/result',   :to => 'quiz#result'
   match '/question_result', :to=> 'quiz#question_result'
   match '/show', :to=> 'quiz#show_question'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

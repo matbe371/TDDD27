@@ -14,7 +14,8 @@ class Quiz < ActiveRecord::Base
   
   #Relationer
   belongs_to :user
-  has_many: :answers, :playlists
+  has_many :answers
+  has_many :playlists
   
   #Klassvariabler
   attr_accessible :genre, :score, :user_id

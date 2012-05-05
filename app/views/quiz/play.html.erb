@@ -1,35 +1,35 @@
 <h2>Question <b><%= @question_no%></b> of <b>10</b></h2> <!--Fråga i ordningen-->
-<h2>Score: <strong>0</strong>p</h2> <!--Aktuell poäng-->
+<h2>Score: <strong><%= @quiz.score%></strong>p</h2> <!--Aktuell poäng-->
 
 <div id="question_span">
 	<div id="easy_questions">
 		<h3>Easy, <b>300p</b></h3><br />
-		<!--Länk till en fråga. Själva länken är i from av en bild, som fås från YouTube. Via routes.rb fås sökvägen show_path. 
+		<!--Länk till en fråga. Själva länken är i from av en bild (image_tag), som fås från YouTube. Via routes.rb fås sökvägen show_path. 
 			Frågan fås ur arrayen easy_questions från vår action i quiz contoller och den skickas med som GET-parameter. 
 			Här skickas även med parametrar för frågeräknare och frågans kategori. -->
-		<%= link_to image_tag(@url_array_easy[0], :size=>"120x90"), show_path(params={ :question_nr=>@question_no, :question=>@easy_questions[0], :category=>@easy_info[1]})%> <!--Länk till en fråga, medskickar parametrar från aktuell fråga. -->
+		<%= link_to image_tag(@url_array_easy[0], :size=>"120x90"), show_path(params={:quiz_id=>@quiz.id, :question_nr=>@question_no, :question=>@easy_questions[0], :category=>@easy_info[1], :points=>300})%> <!--Länk till en fråga, medskickar parametrar från aktuell fråga. -->
 		
 		<!--Skriver även ut information om frågan, för att vägleda användaren.-->
 		<p>Artist: <b><%= @easy_info[0]%></b>. Category: <b><%= @easy_info[1]%></b>.</p><br />
 		
-		<%= link_to image_tag(@url_array_easy[1], :size=>"120x90"), show_path(params={ :question_nr=>@question_no, :question=>@easy_questions[1], :category=>@easy_info[3]})%>
+		<%= link_to image_tag(@url_array_easy[1], :size=>"120x90"), show_path(params={:quiz_id=>@quiz.id, :question_nr=>@question_no, :question=>@easy_questions[1], :category=>@easy_info[3], :points=>300})%>
 		<p>Artist: <b><%= @easy_info[2]%></b>. Category: <b><%= @easy_info[3]%></b>.</p><br /><br />
 	</div>
 	<div id="medium_questions">
 		<h3>Medium, <b>600p</b></h3><br />
-		<%= link_to image_tag(@url_array_medium[0], :size=>"120x90"), show_path(params={ :question_nr=>@question_no, :question=>@medium_questions[0], :category=>@medium_info[1]})%>
+		<%= link_to image_tag(@url_array_medium[0], :size=>"120x90"), show_path(params={:quiz_id=>@quiz.id, :question_nr=>@question_no, :question=>@medium_questions[0], :category=>@medium_info[1], :points=>600})%>
 		<p>Artist: <b><%= @medium_info[0]%></b>. Category: <b><%= @medium_info[1]%></b>.</p><br />
 		
-		<%= link_to image_tag(@url_array_medium[1], :size=>"120x90"), show_path(params={ :question_nr=>@question_no, :question=>@medium_questions[1], :category=>@medium_info[3]})%>
+		<%= link_to image_tag(@url_array_medium[1], :size=>"120x90"), show_path(params={:quiz_id=>@quiz.id, :question_nr=>@question_no, :question=>@medium_questions[1], :category=>@medium_info[3], :points=>600})%>
 		<p>Artist: <b><%= @medium_info[2]%></b>. Category: <b><%= @medium_info[3]%></b>.</p><br /><br />
 	</div>
 	<div id="hard_questions">
 		<h3>Advanced, <b>900p</b></h3><br />
 		
-		<%= link_to image_tag(@url_array_hard[0], :size=>"120x90"), show_path(params={ :question_nr=>@question_no, :question=>@hard_questions[0], :category=>@hard_info[1]})%>
+		<%= link_to image_tag(@url_array_hard[0], :size=>"120x90"), show_path(params={:quiz_id=>@quiz.id, :question_nr=>@question_no, :question=>@hard_questions[0], :category=>@hard_info[1], :points=>900})%>
 		<p>Artist: <b><%= @hard_info[0]%></b>. Category: <b><%= @hard_info[1]%></b>.</p><br />
 		
-		<%= link_to image_tag(@url_array_hard[1], :size=>"120x90"), show_path(params={ :question_nr=>@question_no, :question=>@hard_questions[1], :category=>@hard_info[3]})%>
+		<%= link_to image_tag(@url_array_hard[1], :size=>"120x90"), show_path(params={:quiz_id=>@quiz.id, :question_nr=>@question_no, :question=>@hard_questions[1], :category=>@hard_info[3], :points=>900})%>
 		<p>Artist: <b><%= @hard_info[2]%></b>. Category: <b><%= @hard_info[3]%></b>.</p><br />
 	</div>
 </div>
