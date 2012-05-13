@@ -2,5 +2,4 @@
 <h2>Result= <%= @result%></h2>
 <h2>Score = <%= @quiz.score%>p</h2>
 
-<%= button_to "Next question ->", question_result_path(params={:quiz_id=>@quiz.id, :question_no=>@next_question_nr}) %>
-<%= button_to "Play!", play_path(params={:quiz_id=>@new_quiz.id, :question_no=>1}) %>
+<%= button_to "Next question ->", play_path(params={:quiz_id=>@quiz.id, :question_no=>@next_question_nr}) %>

@@ -1,27 +1,50 @@
+/*Allmän layout*/
 body{
 	padding-bottom:60px;
+	background-image: url("background_pattern.png");
 }
 
 header{
-	background-color: #1F4087;
+	/*background-color: #1F4087;*/
+	height: 50px;
+	background-image: url("header_background.png");
+	-moz-box-shadow: 0 0 3px 3px #888;
+	-webkit-box-shadow: 0 0 3px 3px#888;
+	box-shadow: 0 0 3px 3px #888;
+	position: fixed;
+	width: 100%;
 }
 
 footer{
 	background-color: #1F4087;
-	position:absolute;
-   	margin-bottom:0px;
-   	height: 60px;
-   	width:100%;
+	color: #dbe1f6;
+	width: 950px;
+	margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    border:solid;
+    border-width: 3px;
+    border-color: #dbe1f6;
+    border-radius:10px;
+	-moz-border-radius:10px; /* Firefox 3.6 and earlier */
+}
+
+.footerlink{
+	color: #dbe1f6;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.footerlink:hover{
+	color: #dbe1f6;
+	text-decoration: underline;
+	font-weight: bold;
 }
 
 .container{
 	min-height: 800px;
 }
 
-.navigation{
-	width:950px;
-	margin:0 auto;
-}
 .container{
 	color: #754719;
 }
@@ -36,6 +59,75 @@ h2{
 
 h3{
 	color: #754719
+}
+
+a{
+	text-decoration: none;
+	color: #1F4087;
+}
+
+a:hover{
+	text-decoration: underline;
+	color: #1F4087;
+}
+/*Navigationsmenyn*/
+
+#navigation{
+	width:950px;
+	margin:0 auto;
+	position:relative;
+	left:-236px;
+}
+
+#navigation ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+#navigation a{
+	color: #dbe1f6;
+	display:block;
+	width:110px;
+	height: 50px;
+	text-decoration: none;
+	text-align:center;
+	font-size: 30px;
+}
+
+#navigation a:hover{
+	color: white;
+	/*background-image: url("header_link_pressed.png");*/
+}
+
+#navigation li{
+	float: left;
+}
+
+#logo{
+	background-image: url("logo_stroke_blue.png");
+	background-repeat:no-repeat;
+	display: block;
+	float: left;
+	padding-right:120px;
+	width: 226px;
+	height: 40px;
+	position: relative;
+	top: 5px;
+}
+
+#logo:hover{
+	background-image: url("logo_stroke_white.png");
+}
+
+/*Startsidan home*/
+
+#homecontent{
+	display: inline;
+}
+
+.homecontent_item{
+	float:left;
 }
 
 /*Sidan som slumar frågor*/

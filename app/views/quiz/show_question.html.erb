@@ -19,7 +19,7 @@
   		<div><%= submit_tag 'Submit awnser!' %></div>
 	<% end -%>
 	
-	<!--Användaren kan även välja att inte svara blankt på frågan.-->
+	<!--Användaren kan även välja att svara blankt på frågan.-->
 	<%= button_to "I have no clue!", question_result_path(params={:answer=>0, :quiz_id=>@quiz.id, :question_nr=>@current_question_nr, :correct_answer=>@db_question.answer, :points=>@points}) %> 
 </div>
 

@@ -1,2 +1,144 @@
-<h1>Quiz#result</h1>
-<p>Find me in app/views/quiz/result.html.erb</p>
+<h1>Quiz Result</h1>
+<h2>You scored <b><%=@quiz.score%>p</b> on this quiz.</h2>
+
+<div id="social">Tell your friends: FACEBOOK, TWITTER</div> <!--TODO - implementera FB och Twitter.-->
+
+<!--TODO - implementera detta!-->
+<h3>*bild på maskot*</h3>
+<h3>*länk till profil*</h3>
+
+<!--Redovisar alla rätta svar.-->
+<div id="correct_answers">
+	<h3>Correct answers</h3>
+	<p><b>1. <%= @answers[0]%></b></p>
+	<p><b>2. <%= @answers[1]%></b></p>
+	<p><b>3. <%= @answers[2]%></b></p>
+	<p><b>4. <%= @answers[3]%></b></p>
+	<p><b>5. <%= @answers[4]%></b></p>
+	<p><b>6. <%= @answers[5]%></b></p>
+	<p><b>7. <%= @answers[6]%></b></p>
+	<p><b>8. <%= @answers[7]%></b></p>
+	<p><b>9. <%= @answers[8]%></b></p>
+	<p><b>10. <%= @answers[9]%></b></p>
+</div>
+
+<div id="Playlist">
+	<h3>Did you like the music in this quiz? Here's the playlist!</h3>
+	<!--Skriver ut allt innehåll i form av länkar till LastFM, så att användaren kan upptäcka musiken i quizzet.-->
+	<p><b>
+		1. <%= link_to @playlist[0], "http://www.lastfm.com/music/#{@playlist[0]}", :target=>'_blank'%> - <!--Skriver först ut länkt till artist. Fullstängit ULR får mha string-parsing.-->
+		<%= 
+			#Om det är ett album slutar namnet med "(album)" i databasen. Det vill vi trimma bort när vi länkar.
+			if @playlist[1].last == ")" 
+				#Använder helper-metoden get_album_name, som finns i helpers/quiz_helper.rb
+				album_name = get_album_name(@playlist[1])
+				#Nu kan länken med korrekt url skrivas ut.
+				link_to @playlist[1], "http://www.lastfm.com/music/#{@playlist[0]}/#{album_name}", :target=>'_blank'
+			else
+				#Om det inte är ett album är det en låt, och då behövs ej stängen trimmas.
+				link_to @playlist[1], "http://www.lastfm.com/music/#{@playlist[0]}/_/#{@playlist[1]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		2. <%= link_to @playlist[2], "http://www.lastfm.com/music/#{@playlist[2]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[3].last == ")" 
+				album_name = get_album_name(@playlist[3])
+				link_to @playlist[3], "http://www.lastfm.com/music/#{@playlist[2]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[3], "http://www.lastfm.com/music/#{@playlist[2]}/_/#{@playlist[3]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		3. <%= link_to @playlist[4], "http://www.lastfm.com/music/#{@playlist[4]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[5].last == ")" 
+				album_name = get_album_name(@playlist[5])
+				link_to @playlist[5], "http://www.lastfm.com/music/#{@playlist[4]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[5], "http://www.lastfm.com/music/#{@playlist[4]}/_/#{@playlist[5]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		4. <%= link_to @playlist[6], "http://www.lastfm.com/music/#{@playlist[6]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[7].last == ")" 
+				album_name = get_album_name(@playlist[7])
+				link_to @playlist[7], "http://www.lastfm.com/music/#{@playlist[6]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[7], "http://www.lastfm.com/music/#{@playlist[6]}/_/#{@playlist[7]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		5. <%= link_to @playlist[8], "http://www.lastfm.com/music/#{@playlist[8]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[9].last == ")" 
+				album_name = get_album_name(@playlist[9])
+				link_to @playlist[9], "http://www.lastfm.com/music/#{@playlist[8]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[9], "http://www.lastfm.com/music/#{@playlist[8]}/_/#{@playlist[9]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		6. <%= link_to @playlist[10], "http://www.lastfm.com/music/#{@playlist[10]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[11].last == ")" 
+				album_name = get_album_name(@playlist[11])
+				link_to @playlist[11], "http://www.lastfm.com/music/#{@playlist[10]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[11], "http://www.lastfm.com/music/#{@playlist[10]}/_/#{@playlist[11]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		7. <%= link_to @playlist[12], "http://www.lastfm.com/music/#{@playlist[12]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[13].last == ")" 
+				album_name = get_album_name(@playlist[13])
+				link_to @playlist[13], "http://www.lastfm.com/music/#{@playlist[12]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[13], "http://www.lastfm.com/music/#{@playlist[12]}/_/#{@playlist[13]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		8. <%= link_to @playlist[14], "http://www.lastfm.com/music/#{@playlist[14]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[15].last == ")" 
+				album_name = get_album_name(@playlist[15])
+				link_to @playlist[15], "http://www.lastfm.com/music/#{@playlist[14]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[15], "http://www.lastfm.com/music/#{@playlist[14]}/_/#{@playlist[15]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		9. <%= link_to @playlist[16], "http://www.lastfm.com/music/#{@playlist[16]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[17].last == ")" 
+				album_name = get_album_name(@playlist[17])
+				link_to @playlist[17], "http://www.lastfm.com/music/#{@playlist[16]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[17], "http://www.lastfm.com/music/#{@playlist[16]}/_/#{@playlist[17]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+	<p><b>
+		10. <%= link_to @playlist[18], "http://www.lastfm.com/music/#{@playlist[18]}", :target=>'_blank'%> - 
+		<%= 
+			if @playlist[19].last == ")" 
+				album_name = get_album_name(@playlist[19])
+				link_to @playlist[19], "http://www.lastfm.com/music/#{@playlist[14]}/#{album_name}", :target=>'_blank'
+			else
+				link_to @playlist[19], "http://www.lastfm.com/music/#{@playlist[18]}/_/#{@playlist[19]}", :target=>'_blank'
+			end
+		%>
+	</b></p>
+</div>
+
+<%= link_to "Take another quiz!", confirm_path %><!--Länk till '/confirm' i routes.rb-->
