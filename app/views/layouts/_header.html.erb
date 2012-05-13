@@ -2,12 +2,12 @@
 	<!--Sidonavigation-->
 	
 	<nav id="navigation">
-		<a href="" id="logo"></a>
-		<ul>
-			<li><a href="">START</a></li>
-			<li><a href="">HELP</a></li>
-			<li><a href="">NEW</a></li>
-			<li><a href="">LOG IN</a></li>
+		<a href="root_path" id="logo"></a>
+		<ul class="menu">
+			<li><%= link_to "Home", root_path,:id=>"nav_home", :class=>"active"%></li>
+			<li><%=link_to "Help", instructions_path, :id=>"nav_help"%></li>
+			<li><%= link_to "New", root_path,:id=>"nav_new" %></li>
+			<li><%= link_to "Log in", root_path,:id=>"nav_login"%></li>
 		</ul>
 	</nav>
 </header>

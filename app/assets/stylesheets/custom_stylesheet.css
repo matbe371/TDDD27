@@ -70,6 +70,24 @@ a:hover{
 	text-decoration: underline;
 	color: #1F4087;
 }
+
+.styled_btn{
+	color: #dbe1f6;
+	font-size: 30px;
+	background: url("header_background.png");
+	border:solid;
+    border-width: 3px;
+    border-color: #dbe1f6;
+    border-radius:10px;
+	-moz-border-radius:10px; /* Firefox 3.6 and earlier */
+	
+}
+
+.styled_btn:hover{
+	cursor: pointer;
+	color: white;	
+}
+
 /*Navigationsmenyn*/
 
 #navigation{
@@ -120,6 +138,10 @@ a:hover{
 	background-image: url("logo_stroke_white.png");
 }
 
+.active{
+	background-image: url("link_pressed.png");
+}
+
 /*Startsidan home*/
 
 #homecontent{
@@ -130,6 +152,15 @@ a:hover{
 	float:left;
 }
 
+#home_btn_panel{
+	margin-top: 25px;
+}
+
+#maskot_pointing{
+	display: none;
+	width:400px;
+	height:400px;
+}
 /*Sidan som slumar frågor*/
 
 #question_span{
@@ -191,10 +222,33 @@ a:hover{
 	width: 560px;
 }
 
+#styled_text_field{
+	border: solid;
+	border-width: 2px;
+	border-color: #754719;
+	height: 30px;
+}
+
 #answer{
 	width: 200px;
 	height: 50px;
 	font: 30px;
 }
 
+/*Resultatsidan*/
+#correct_answers{
+	background-image: url("paper.png");
+	width: 400px;
+	height: 455px;
+}
+
+.list{
+	text-indent:40px;
+}
+
+#playlist{
+	background-image: url("paper.png");
+	width: 400px;
+	height: 455px;
+}
 

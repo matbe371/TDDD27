@@ -1,31 +1,37 @@
+<br />
+<br />
+<br />
+<br />
 <h1>Quiz Result</h1>
 <h2>You scored <b><%=@quiz.score%>p</b> on this quiz.</h2>
 
-<div id="social">Tell your friends: FACEBOOK, TWITTER</div> <!--TODO - implementera FB och Twitter.-->
+<!--<div id="social">Tell your friends: FACEBOOK, TWITTER</div> TODO - implementera FB och Twitter.-->
 
-<!--TODO - implementera detta!-->
+<!--TODO - implementera detta!
 <h3>*bild på maskot*</h3>
-<h3>*länk till profil*</h3>
+<h3>*länk till profil*</h3>-->
 
 <!--Redovisar alla rätta svar.-->
 <div id="correct_answers">
-	<h3>Correct answers</h3>
-	<p><b>1. <%= @answers[0]%></b></p>
-	<p><b>2. <%= @answers[1]%></b></p>
-	<p><b>3. <%= @answers[2]%></b></p>
-	<p><b>4. <%= @answers[3]%></b></p>
-	<p><b>5. <%= @answers[4]%></b></p>
-	<p><b>6. <%= @answers[5]%></b></p>
-	<p><b>7. <%= @answers[6]%></b></p>
-	<p><b>8. <%= @answers[7]%></b></p>
-	<p><b>9. <%= @answers[8]%></b></p>
-	<p><b>10. <%= @answers[9]%></b></p>
+	<h3 class="list">Correct answers</h3>
+	<br />
+	<p class="list"><b>1. <%= @answers[0]%></b></p>
+	<p class="list"><b>2. <%= @answers[1]%></b></p>
+	<p class="list"><b>3. <%= @answers[2]%></b></p>
+	<p class="list"><b>4. <%= @answers[3]%></b></p>
+	<p class="list"><b>5. <%= @answers[4]%></b></p>
+	<p class="list"><b>6. <%= @answers[5]%></b></p>
+	<p class="list"><b>7. <%= @answers[6]%></b></p>
+	<p class="list"><b>8. <%= @answers[7]%></b></p>
+	<p class="list"><b>9. <%= @answers[8]%></b></p>
+	<p class="list"><b>10. <%= @answers[9]%></b></p>
 </div>
-
-<div id="Playlist">
-	<h3>Did you like the music in this quiz? Here's the playlist!</h3>
+<br />
+<div id="playlist">
+	<h3 class="list">Did you like the music? Here's the playlist!</h3>
+	<br />
 	<!--Skriver ut allt innehåll i form av länkar till LastFM, så att användaren kan upptäcka musiken i quizzet.-->
-	<p><b>
+	<p class="list"><b>
 		1. <%= link_to @playlist[0], "http://www.lastfm.com/music/#{@playlist[0]}", :target=>'_blank'%> - <!--Skriver först ut länkt till artist. Fullstängit ULR får mha string-parsing.-->
 		<%= 
 			#Om det är ett album slutar namnet med "(album)" i databasen. Det vill vi trimma bort när vi länkar.
@@ -40,7 +46,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		2. <%= link_to @playlist[2], "http://www.lastfm.com/music/#{@playlist[2]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[3].last == ")" 
@@ -51,7 +57,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		3. <%= link_to @playlist[4], "http://www.lastfm.com/music/#{@playlist[4]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[5].last == ")" 
@@ -62,7 +68,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		4. <%= link_to @playlist[6], "http://www.lastfm.com/music/#{@playlist[6]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[7].last == ")" 
@@ -73,7 +79,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		5. <%= link_to @playlist[8], "http://www.lastfm.com/music/#{@playlist[8]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[9].last == ")" 
@@ -84,7 +90,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		6. <%= link_to @playlist[10], "http://www.lastfm.com/music/#{@playlist[10]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[11].last == ")" 
@@ -95,7 +101,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		7. <%= link_to @playlist[12], "http://www.lastfm.com/music/#{@playlist[12]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[13].last == ")" 
@@ -106,7 +112,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		8. <%= link_to @playlist[14], "http://www.lastfm.com/music/#{@playlist[14]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[15].last == ")" 
@@ -117,7 +123,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		9. <%= link_to @playlist[16], "http://www.lastfm.com/music/#{@playlist[16]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[17].last == ")" 
@@ -128,7 +134,7 @@
 			end
 		%>
 	</b></p>
-	<p><b>
+	<p class="list"><b>
 		10. <%= link_to @playlist[18], "http://www.lastfm.com/music/#{@playlist[18]}", :target=>'_blank'%> - 
 		<%= 
 			if @playlist[19].last == ")" 
@@ -141,4 +147,6 @@
 	</b></p>
 </div>
 
-<%= link_to "Take another quiz!", confirm_path %><!--Länk till '/confirm' i routes.rb-->
+<%= button_to "Take another quiz!", confirm_path, :class=>"styled_btn" %>
+<br />
+<br />

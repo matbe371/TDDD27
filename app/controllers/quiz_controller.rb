@@ -271,13 +271,15 @@ class QuizController < ApplicationController
     squishUserAnswer = user_answer.squish
     #Titelize gör så att alla ord jämförs med stor bokstav först. Dvs. Det spelar inten roll om svar/fråga är skrivan med stor bokstav eller ej.
     if squishAnswer.titleize  == squishUserAnswer.titleize  
-      @result = "Correct"
+      @result_image = "maskot_happy.png"
+      @result = "Yeah, you got it!"
       #Uppdaterar quizzets score. Pointsvariabeln type-castas till en integer för att beräkning skall kunna utföras.
       @quiz.score = @quiz.score + Integer(points) 
       #Uppdateringen sparas i databasen.
       @quiz.save 
     else 
-      @result = "Fail"
+      @result = "Oh, bummer..."
+      @result_image = "maskot_sad.png";
     end
     
     #Plussar på räknaren för antal frågor.
