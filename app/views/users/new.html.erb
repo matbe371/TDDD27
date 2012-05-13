@@ -1,0 +1,28 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<!--Anänder rails inbyggda funktioner för att skapa formulär.-->
+    <%= form_for(@user) do |f| %>
+    
+      <%= render 'shared/error_messages' %> <!--Renderar ut felmedelanden om formuläret fyllts i fel. Filen för detta ligger i views/shared-->
+		
+      <%= f.label :username %><br />
+      <%= f.text_field :username %><br />
+
+      <%= f.label :mail %><br />
+      <%= f.text_field :mail %><br />
+
+      <%= f.label :password %><br />
+      <%= f.password_field :password %><br />
+      
+      <!--TODO, confirmaiton-->
+
+      <%= f.submit "Create my account", class: "styled_btn" %>
+    <% end %>
+  </div>
+</div>

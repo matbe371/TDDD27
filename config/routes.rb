@@ -1,9 +1,11 @@
 TDDD27::Application.routes.draw do
 
+
   #Länkar rooten till indexssidan.
   root :to => 'static_pages#home'
   
   #RESTful path. Genererar automatist paths till actions: index, show, new och edit.
+  resources :users
   #resources :song_questions
   #resources :trivia_questions
   #resources :album_questions
@@ -24,6 +26,7 @@ TDDD27::Application.routes.draw do
   match '/result',   :to => 'quiz#result'
   match '/question_result', :to=> 'quiz#question_result'
   match '/show', :to=> 'quiz#show_question'
+  match '/signup', :to=> 'users#new'
   
 
   # The priority is based upon order of creation:

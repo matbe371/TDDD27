@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                  :length   => { :maximum => 50 }  
   
-  #TODO - mail skall se ut som en mailaddress.               
-  validates :mail, :presence => true,
-                   :length   => { :maximum => 50 } 
+  #Email valideras enligt regex-standrad
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+                
+  validates :mail, :presence => true, format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false } #varje e-mailadress i databasen skall vara unik. Gör ej skilnad på gemener och versaler.
 end
