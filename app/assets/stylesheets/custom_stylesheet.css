@@ -263,5 +263,5 @@ a:hover{
 
 .field_with_errors {
   @extend .control-group;
-  @extend .error;
+  /*@extend .error;*/
  }
