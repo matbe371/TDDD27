@@ -17,7 +17,7 @@
 	<h2><%= @db_question.defenition%></h2>
 	<!--Använder ett formulär för att skicka svaret vidare till resultatsidan när användare trycker på submit. Skickar även med info om aktuell fråga och quiz.-->
 	<%= form_tag(question_result_path(params={:quiz_id=>@quiz.id, :question_nr=>@current_question_nr, :correct_answer=>@db_question.answer, :points=>@points})) do -%>
-		<%= text_field_tag 'answer', nil, :placeholder=>'My answer', :id=>"styled_text_field" %>
+		<%= text_field_tag 'answer', nil, :placeholder=>'My answer', :class=>"styled_text_field" %>
 		<br /><br />
   		<%= submit_tag 'Submit answer!', :class=>"styled_btn" %>
 	<% end -%>

@@ -222,7 +222,7 @@ a:hover{
 	width: 560px;
 }
 
-#styled_text_field{
+.styled_text_field{
 	border: solid;
 	border-width: 2px;
 	border-color: #754719;

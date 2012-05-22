@@ -20,7 +20,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+#Gem för jQuery.
 gem 'jquery-rails'
+
+#Gem för FactoryGirl, som används för att skapa och editera anvnadare
+gem 'factory_girl_rails', '1.4.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

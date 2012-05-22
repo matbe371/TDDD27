@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def new
   
     #Variabel för ny användare
-    @user = User.new(params[:user])
+    @user = User.new(params[:id])
   end
   
   def create
@@ -19,11 +19,12 @@ class UsersController < ApplicationController
   
   def show
     
+    
     #Hämtar aktuell användare.
     @user = User.find(params[:id])
     
     #Titel på sidan.
-    @title = @user
+    @title = @user.username
     
   end
 

@@ -12,13 +12,13 @@
       <%= render 'shared/error_messages' %> <!--Renderar ut felmedelanden om formuläret fyllts i fel. Filen för detta ligger i views/shared-->
 		
       <%= f.label :username %><br />
-      <%= f.text_field :username %><br />
+      <%= f.text_field :username, :class=>"styled_text_field" %><br />
 
       <%= f.label :mail %><br />
-      <%= f.text_field :mail %><br />
+      <%= f.text_field :mail, :class=>"styled_text_field" %><br />
 
       <%= f.label :password %><br />
-      <%= f.password_field :password %><br />
+      <%= f.password_field :password, :class=>"styled_text_field" %><br />
       
       <!--TODO, confirmaiton-->
 
