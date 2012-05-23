@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522174812) do
+ActiveRecord::Schema.define(:version => 20120523084740) do
 
   create_table "album_questions", :force => true do |t|
     t.string   "defenition"
@@ -98,9 +98,11 @@ ActiveRecord::Schema.define(:version => 20120522174812) do
     t.string   "username"
     t.string   "mail"
     t.string   "password"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "remember_token"
+    t.string   "password_digest"
+    t.string   "password_confirmation"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

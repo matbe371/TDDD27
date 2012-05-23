@@ -1,3 +1,6 @@
+@import "bootstrap";
+
+
 /*Allmän layout*/
 body{
 	padding-bottom:60px;
@@ -110,7 +113,7 @@ a:hover{
 	height: 50px;
 	text-decoration: none;
 	text-align:center;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 #navigation a:hover{
@@ -140,6 +143,24 @@ a:hover{
 
 .active{
 	background-image: url("link_pressed.png");
+}
+
+#dropdown-menu{
+	display: none;
+	border: solid;
+	border-width: 2px;
+	border: #1F4087;
+}
+
+.dropdownItem{
+	position: absolute;
+	background: 
+	
+}
+
+.dropdownItem a{
+	text-align: left;
+	background: #1F4087;
 }
 
 /*Startsidan home*/
@@ -264,4 +285,4 @@ a:hover{
 .field_with_errors {
   @extend .control-group;
   /*@extend .error;*/
- }
+}

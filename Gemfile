@@ -5,6 +5,9 @@ gem 'rails', '3.2.3'
 #Gem för boostrap, som används för ett javascriptbibliotek som genererar drop-down-menyn i twitterstil i navigeringmenyn.
 gem "bootstrap-sass", "~> 2.0.3.1"
 
+#Gem för bcrypt, som krypterar lösenord hos användaren till databasen.
+gem "bcrypt-ruby", "~> 3.0.1"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

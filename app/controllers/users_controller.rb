@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def new
   
     #Variabel för ny användare
-    @user = User.new(params[:id])
+    @user = User.new
     
     @title = "sign up"
   end

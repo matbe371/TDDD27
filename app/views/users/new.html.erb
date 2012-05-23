@@ -20,6 +20,9 @@
       <%= f.label :password %><br />
       <%= f.password_field :password, :class=>"styled_text_field" %><br />
       
+      <%= f.label :password_confirmation, "Confirmation" %><br />
+      <%= f.password_field :password_confirmation, :class=>"styled_text_field" %><br />
+      
       <!--TODO, confirmaiton-->
 
       <%= f.submit "Create my account", class: "styled_btn" %>
