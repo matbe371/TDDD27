@@ -6,7 +6,7 @@ TDDD27::Application.routes.draw do
   
   #RESTful path. Genererar automatist paths till actions: index, show, new och edit.
   resources :users
-  resources :sessions, only: [:new, :create, :destroy] #behöver inga controller för deit och show.
+  resources :sessions, only: [:new, :create, :destroy] #behöver inga controller för edit och show.
   
   #Sökvägar som begärs via URL-metoden GET.
   get "quiz/confirm"
@@ -25,8 +25,9 @@ TDDD27::Application.routes.draw do
   match '/question_result', :to=> 'quiz#question_result'
   match '/show', :to=> 'quiz#show_question'
   match '/signup', :to=> 'users#new'
-  match '/signin',  :to=> 'session#new'
-  match '/signout', :to=> 'session#destroy', via: :delete
+  match '/signin',  :to=> 'sessions#new'
+  match '/signout', :to=> 'sessions#destroy', via: :delete
+  
   
 
   # The priority is based upon order of creation:

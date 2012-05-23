@@ -6,8 +6,28 @@
 		<ul class="menu">
 			<li><%= link_to "Home", root_path,:id=>"nav_home", :class=>"active"%></li>
 			<li><%=link_to "Help", instructions_path, :id=>"nav_help"%></li>
-			<li><%= link_to "New", root_path,:id=>"nav_new" %></li>
-			<li><%= link_to "Log in", signin_path,:id=>"nav_login"%></li>
+			
+			
+			<!--Användrer session-helper medoden signed_in? för att kolla om användaren är inloggad eller inte.
+				En inloggad användare får se en annan navigeringsmeny än en användare som inte är inloggad.-->
+			<% if signed_in? %>
+            <li><%= link_to "New", root_path,:id=>"nav_new" %></li>
+            
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign in", signin_path,:id=>"nav_login"%></li>
+          <% end %>
 		</ul>
 	</nav>
 </header>

@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="span6 offset3">
-  	<!--Anänder rails inbyggda funktioner för att skapa formulär.-->
+  	<!--Anänder rails inbyggda funktioner för att skapa formulär. Använder sig av POST och route '/users' dvs. action create-->
     <%= form_for(@user) do |f| %>
     
       <%= render 'shared/error_messages' %> <!--Renderar ut felmedelanden om formuläret fyllts i fel. Filen för detta ligger i views/shared-->
