@@ -1,34 +1,51 @@
 <header>
 	<!--Sidonavigation-->
-	
-	<nav id="navigation">
+	<div id="menu">
 		<a href="root_path" id="logo"></a>
-		<ul class="menu">
-			<li><%= link_to "Home", root_path,:id=>"nav_home", :class=>"active"%></li>
-			<li><%=link_to "Help", instructions_path, :id=>"nav_help"%></li>
-			
-			
-			<!--Användrer session-helper medoden signed_in? för att kolla om användaren är inloggad eller inte.
-				En inloggad användare får se en annan navigeringsmeny än en användare som inte är inloggad.-->
-			<% if signed_in? %>
-            <li><%= link_to "New", root_path,:id=>"nav_new" %></li>
-            
-            <li id="fat-menu" class="dropdown">
-              <a href="#" id="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.username%> <b class="caret"></b>
-              </a>
-              <ul id="dropdown-menu">
-                <li class="dropdownItem"><%= link_to "Profile", current_user, :class=>"dropdownLink"%></li>
-                <br /><br />
-                <li class="dropdownItem">
-                  <%= link_to "Sign out", signout_path, method: "delete", :class=>"dropdownLink" %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", signin_path,:id=>"nav_login"%></li>
-          <% end %>
-          
-		</ul>
-	</nav>
+		<nav id="navigation">
+			<ul>
+				<!--Före varje menyalternativ görs en kontroll vilekn sida som är den aktuella. Den aktuella siudan skall markeras med nedtryckt -->
+				<% if current_page?(root_path) == true %>
+					<li><%= link_to "Home", root_path,:id=>"nav_home", :class=>"active"%></li>
+				<% else %>
+					<li><%= link_to "Home", root_path,:id=>"nav_home" %></li>
+				<% end %>
+				<% if current_page?(instructions_path) == true %>
+					<li><%= link_to "Help", instructions_path, :id=>"nav_help", :class=>"active"%></li>
+				<% else %>
+					<li><%= link_to "Help", instructions_path, :id=>"nav_help" %></li>
+				<% end %>
+				
+				<!--Användrer session-helper medoden signed_in? för att kolla om användaren är inloggad eller inte.
+					En inloggad användare får se en annan navigeringsmeny än en användare som inte är inloggad.-->
+				<% if signed_in? %>
+	            <li>
+	            	<%= link_to "New", root_path, :id=>"nav_new"%>
+	            </li>
+	     		
+	            <!--Dropdown-menyn-->
+	            <li class="dropdown">  	
+	            	<% if current_page?(:action=>"show", :controller=>"users") == true %>
+						<a href="#" id="dropdown-toggle" class="active">
+	                		<%= current_user.username%> <b class="caret"></b>
+	              		</a>
+					<% else %>
+						<a href="#" id="dropdown-toggle" >
+	              		  <%= current_user.username%> <b class="caret"></b>
+	             		 </a>
+					<% end %>	
+	              <ul id="dropdown-menu">
+	                <li class="dropdownItem"><%= link_to "Profile", current_user, :class=>"dropdownLink"%></li>
+	                <br /><br />
+	                <li class="dropdownItem">
+	                  <%= link_to "Sign out", signout_path, method: "delete", :class=>"dropdownLink"%>
+	                </li>
+	              </ul>
+	            </li>
+	          <% else %>
+	            <li><%= link_to "Sign in", signin_path,:id=>"nav_login"%></li>
+	          <% end %>
+			</ul>
+		</nav>
+	</div>
 </header>
