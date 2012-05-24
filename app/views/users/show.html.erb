@@ -3,7 +3,48 @@
 <br />
 <br />
 <h1><%= @user.username%></h1>
-<h2>Quizzes taken: </h2>
-<h2>Total score: </h2>
-<h2>Avarage score: </h2>
+<div id="profile">
+<div id="profile_span">
+	<div id="profile_image">
+		<%= image_tag("image_profile.png")%>
+	</div>
+	<div id="profile_content">
+		<h2>Quizzes taken: <b><%= @no_of_quizzes%></b></h2>
+		<h2>Total score: <b><%= @total_score%>p</b></h2>
+		<h2>Avarage score: <b><%= @avarage_score%>p</b></h2>
+	</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="statistics">
+	<h2>Score over time</h2>
+	<div id="placeholder"></div>
+</div>
+</div>
+<script type="text/javascript">
+$(function () {
+    var results = <%=@statistics%>           
+    $.plot($("#placeholder"), [
+
+        {
+            data: results,
+            lines: { show: true, fill:true },
+			points: {show: true}
+        }
+
+    ], { 
+    	xaxis: { 
+    		mode: "time" 
+    	},
+    	grid: {
+    		backgroundColor: { colors: ["#fff", "#eee"] }
+    	} 
+    });
+});
+</script>
+
 

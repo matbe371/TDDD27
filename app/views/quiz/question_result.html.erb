@@ -4,5 +4,5 @@
 <br />
 <h1><%= @result%></h1>
 <%= image_tag(@result_image)%>
-<h2>Current score: <%= @quiz.score%>p</h2>
+<h2>Current score: <b><%= @quiz.score%>p</b></h2>
 <%= button_to "Next question ->", play_path(params={:quiz_id=>@quiz.id, :question_no=>@next_question_nr}), :class=>"styled_btn" %>

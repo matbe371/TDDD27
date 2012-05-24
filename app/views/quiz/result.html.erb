@@ -12,6 +12,7 @@
 <h3>*länk till profil*</h3>-->
 
 <!--Redovisar alla rätta svar.-->
+
 <div id="correct_answers">
 	<h3 class="list">Correct answers</h3>
 	<br />
@@ -146,7 +147,7 @@
 		%>
 	</b></p>
 </div>
-
-<%= button_to "Take another quiz!", confirm_path, :class=>"styled_btn" %>
+<%= button_to "Profile Page =>", current_user, :class=>"styled_btn" %>
+<%= button_to "Take another quiz =>", confirm_path, :class=>"styled_btn" %>
 <br />
 <br />

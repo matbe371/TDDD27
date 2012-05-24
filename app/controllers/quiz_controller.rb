@@ -4,7 +4,9 @@ class QuizController < ApplicationController
   #Action för att berkäfta quiz
   def confirm
     @title = "Confirm"
-    @user = User.first #TODO ändra till sessionuser.
+    
+    #Användaren som utför quizzet är den som är inloggad.
+    @user = current_user
     
     #Skapar en ny quiz.
     @new_quiz = @user.quizzes.create(:score=>0, :genre=>"All")

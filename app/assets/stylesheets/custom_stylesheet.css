@@ -296,6 +296,34 @@ a:hover{
 	height: 455px;
 }
 
+/*Profilsidan*/
+#profile{
+	display: table;
+}
+
+#profile_span{
+	display: inline;
+}
+
+#profile_image{
+	float: left;
+}
+
+#profile_content{
+	margin-left: 20px;
+	float:left;
+}
+
+#statistics{
+	float: left;
+}
+
+#placeholder{
+	width: 600px;
+	height: 300px;
+	
+}
+
 /*Felmeddelanden*/
 #error_explanation {
   color: #f00;
