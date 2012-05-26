@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SongQuestionsControllerTest < ActionController::TestCase
+class AlbumsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success

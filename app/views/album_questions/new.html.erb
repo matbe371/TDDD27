@@ -1,0 +1,27 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add question</h1>
+<h2>Step <b>2</b> of <b>2</b> - Phrase the question.</h2>
+	<h3>Album question, <%= Album.find(@album_id).title%>.</h3>
+	 <%= form_for(@album_question) do |f| %>
+		
+      <%= f.label "Enter question" %><br />
+      <%= f.text_area :defenition %><br />
+
+      <%= f.label "Correct answer" %><br />
+      <%= f.text_field :answer, :class=>"styled_text_field" %><br /><br />
+      
+      <%= f.hidden_field :album_id, :value=>@album_id%>
+      
+      <%= f.label "Difficulty" %><br />
+      <%= f.radio_button :level, "easy" %> <%= f.label "Easy" %>
+      <%= f.radio_button :level, "meduim" %> <%= f.label "Medium" %>
+      <%= f.radio_button :level, "hard" %> <%= f.label "Hard" %>
+	  <br />
+	  <br />
+      <%= f.submit "Create question", class: "styled_btn" %>
+      
+    <% end %>
+

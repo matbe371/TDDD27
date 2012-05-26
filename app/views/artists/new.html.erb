@@ -1,0 +1,31 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add artist</h1>
+<%= form_for(@artist) do |f| %>
+	
+	<%= f.label "Artist name" %><br />
+    <%= f.text_field :name, :class=>"styled_text_field" %><br />
+	<br />
+	<b>Artist genre: </b>
+	<select id="artist__genre" name="artist[genre]">
+		<option value="Pop">Pop</option>
+		<option value="Rock">Rock</option>
+		<option value="Electronic">Electronic</option>
+		<option value="Metal">Metal</option>
+		<option value="Hip-Hop">Hip-Hop</option>
+		<option value="Indie">Indie</option>
+		<option value="Country">Country</option>
+		<option value="Reggae">Reggae</option>
+		<option value="RnB">RnB</option>
+		<option value="Folk">Folk</option>
+		<option value="Funk">Funk</option>
+		<option value="Blues">Blues</option>
+		<option value="Jazz">Jazz</option>
+		<option value="Acuostic">Acuostic</option>
+		<option value="Other">Other</option>
+	</select>
+	<br />
+	<%= submit_tag 'Add artist', :class=>"styled_btn" %>
+<% end -%>

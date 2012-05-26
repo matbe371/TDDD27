@@ -1,0 +1,10 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add trivia question</h1>
+<h2>Step <b>1</b> of <b>2</b> - Choose artist.</h2>
+<h3>Artists in database</h3>
+<%	for i in 0..@no_of_artists-1 %>
+		<b><%= link_to @artists[i].name, step2trivia_path(params={:artist_id=>@artists[i].id}) %></b> <br />
+<% end %>

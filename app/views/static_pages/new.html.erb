@@ -1,0 +1,40 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Site content</h1>
+
+<h2>View site content</h2>
+
+<select id="site_content_selector">
+  <option value="1">Artists</option>
+  <option value="2">Songs</option>
+  <option value="3">Albums</option>
+</select>
+<br />
+<br />
+<div id="site_artists">
+	<h3><%= button_to "Add artist", newartist_path, :class=>"styled_btn"%></h3>
+	<h3><%= button_to "Add trivia question", step1trivia_path, :class=>"styled_btn"%></h3>
+	<p>Current artists in database:</p>
+	<%	for i in 0..@no_of_artists-1 %>
+		<b><%= @artist[i].name %></b> <br />
+	<% end %>
+</div>
+
+<div id="site_songs">
+	<h3><%= button_to "Add song", step1songs_path, :class=>"styled_btn"%></h3>
+	<h3><%= button_to "Add song question", step1songquestion_path, :class=>"styled_btn"%></h3>
+	<p>Current songs in database:</p>
+	<%	for i in 0..@no_of_songs-1 %>
+		<b><%= @songs[i].title %></b> , by <b><%= @songs[i].artist.name %></b><br />
+	<% end %>
+</div>
+<div id="site_albums">
+	<h3><%= button_to "Add album", step1albums_path, :class=>"styled_btn"%></h3>
+	<h3><%= button_to "Add album question", step1albumquestion_path, :class=>"styled_btn"%></h3>
+	<p>Current albums in database:</p>
+	<%	for i in 0..@no_of_albums-1 %>
+		<b><%= @albums[i].title %></b> , by <b><%= @albums[i].artist.name %></b><br />
+	<% end %>
+</div>

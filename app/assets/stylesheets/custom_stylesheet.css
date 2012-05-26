@@ -88,6 +88,14 @@ a:hover{
 	color: white;	
 }
 
+select{
+	width: 120px;
+	height: 30px;
+	border: solid;
+	border-width: 2px;
+	border-color: #754719;
+}
+
 /*Navigationsmenyn*/
 
 #navigation{
@@ -322,6 +330,16 @@ a:hover{
 	width: 600px;
 	height: 300px;
 	
+}
+
+/*Site browser*/
+
+#site_songs{
+	display: none;
+}
+
+#site_albums{
+	display: none;
 }
 
 /*Felmeddelanden*/

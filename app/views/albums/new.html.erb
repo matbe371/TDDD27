@@ -1,0 +1,17 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add album</h1>
+<h2>Step <b>2</b> of <b>2</b> - Add album.</h2>
+<%= form_for(@album) do |f| %>
+	
+	<%= f.label "Album name" %><br />
+    <%= f.text_field :title, :class=>"styled_text_field" %><br />
+	<br />
+	<%= f.label "YouTube clip ID" %><br />
+    <%= f.text_field :youtube_url, :class=>"styled_text_field" %><br />
+	<%= f.hidden_field :artist_id, :value=>@artist_id%>
+	<br />
+	<%= submit_tag 'Add album', :class=>"styled_btn" %>
+<% end -%>

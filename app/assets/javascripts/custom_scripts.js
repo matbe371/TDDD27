@@ -20,5 +20,26 @@ $(document).ready(function(){
 				$("#dropdown-toggle").addClass("active");
 			}
 		});
+	
+	//Funktion som fade:ar in browse-innehåll baerat på dropdown-menyn.
+	$("#site_content_selector").change(function(){
+		var content = document.getElementById("site_content_selector").value;
+		if(content == 1){			
+			$("#site_artists").fadeIn();
+			$("#site_songs").hide();
+			$("#site_albums").hide();
+		}
+		else if(content == 2){
+			
+			$("#site_artists").hide();
+			$("#site_songs").fadeIn();
+			$("#site_albums").hide();
+		}
+		else if(content == 3){
+			$("#site_artists").hide();
+			$("#site_songs").hide();
+			$("#site_albums").fadeIn();
+		}
+	});
 		
 });

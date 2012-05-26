@@ -19,9 +19,11 @@
 				<!--Användrer session-helper medoden signed_in? för att kolla om användaren är inloggad eller inte.
 					En inloggad användare får se en annan navigeringsmeny än en användare som inte är inloggad.-->
 				<% if signed_in? %>
-	            <li>
-	            	<%= link_to "New", root_path, :id=>"nav_new"%>
-	            </li>
+				<% if current_page?(sitebrowser_path) == true %>
+					<li><%= link_to "Content", sitebrowser_path, :id=>"nav_new", :class=>"active"%></li>
+				<% else %>
+					<li><%= link_to "Content", sitebrowser_path, :id=>"nav_new"%></li>
+				<% end %>
 	     		
 	            <!--Dropdown-menyn-->
 	            <li class="dropdown">  	

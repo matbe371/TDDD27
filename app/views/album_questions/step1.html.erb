@@ -1,0 +1,10 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add album question</h1>
+<h2>Step <b>1</b> of <b>2</b> - Choose album.</h2>
+<p>Songs in database:</p>
+<%	for i in 0..@no_of_albums-1 %>
+	<b><%= link_to @albums[i].title, step2albumquestion_path(params={:album_id=>@albums[i].id}) %></b> , by <b><%= @albums[i].artist.name %></b><br />
+<% end %>

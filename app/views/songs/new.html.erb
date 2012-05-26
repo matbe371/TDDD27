@@ -1,0 +1,16 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add song</h1>
+<%= form_for(@song) do |f| %>
+	
+	<%= f.label "Song name" %><br />
+    <%= f.text_field :title, :class=>"styled_text_field" %><br />
+	<br />
+	<%= f.label "YouTube clip ID" %><br />
+    <%= f.text_field :youtube_url, :class=>"styled_text_field" %><br />
+	<%= f.hidden_field :artist_id, :value=>@artist_id%>
+	<br />
+	<%= submit_tag 'Add song', :class=>"styled_btn" %>
+<% end -%>

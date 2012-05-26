@@ -1,0 +1,10 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Add song question</h1>
+<h2>Step <b>1</b> of <b>2</b> - Choose song.</h2>
+<p>Songs in database:</p>
+<%	for i in 0..@no_of_songs-1 %>
+	<b><%= link_to @songs[i].title, step2songquestion_path(params={:song_id=>@songs[i].id}) %></b> , by <b><%= @songs[i].artist.name %></b><br />
+<% end %>
